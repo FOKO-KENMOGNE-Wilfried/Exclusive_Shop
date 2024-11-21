@@ -12,8 +12,8 @@
         <div class="flex flex-col gap-4">
             <CustomSectionTitle label="Today's" />
             <!--  -->
-            <div class="flex items-center gap-16 text-3xl font-semibold">
-                <p>Flash Sales</p>
+            <div class="flex items-center gap-16 titleStyle">
+                <h2>Flash Sales</h2>
                 <div class="flex gap-4 items-center">
                     <div class="flex flex-col">
                         <p class="text-xs">Days</p>
@@ -49,6 +49,7 @@
                     <Pagination />
                 </template>
             </Carousel>
+            <!--  -->
             <div class="flex justify-center pt-4">
                 <div class="w-48">
                     <CustomButton :handle-click="() => null">
@@ -56,8 +57,10 @@
                     </CustomButton>
                 </div>
             </div>
+            <!--  -->
+            <div class="border-b border-gray-200 py-8"></div>
         </div>
-        <div class="flex flex-col gap-8">
+        <div class="flex flex-col gap-4">
             <CustomSectionTitle label="Categories" />
             <h2 class="titleStyle">Browe By Catgory</h2>
          <!--  -->
@@ -73,11 +76,53 @@
                     <Pagination />
                 </template>
             </Carousel>
+            <!--  -->
+            <div class="border-b border-gray-200 py-8"></div>
         </div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
+        <div class="flex flex-col gap-4">
+            <CustomSectionTitle label="This Month" />
+            <h2 class="titleStyle">Best Selling Products</h2>
+            <Carousel v-bind="config" class="">
+                <Slide v-for="slide in 10" :key="slide" class="h-96 bg-gray-400">
+                    <div class="text-white">
+                        {{ slide }}
+                    </div>
+                </Slide>
+
+                <template #addons>
+                    <Navigation class="bg-black"/>
+                    <Pagination />
+                </template>
+            </Carousel>
+        </div>
+        <div>
+            <div class="bg-gray-400 h-96"></div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <CustomSectionTitle label="Our Products" />
+            <h2 class="titleStyle">Explore Our Products</h2>
+            <div class="flex gap-4 flex-wrap">
+                <div v-for="(element, index) in 8" :key="index" class="bg-gray-400 w-64 h-80 flex items-center justify-center">{{ element }}</div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <CustomSectionTitle label="Feature" />
+            <h2 class="titleStyle">New Arrival</h2>
+            <div class="flex gap-4">
+                <div class="bg-black w-full">
+                    <img src="/public/images/ps5-slim.png" alt="" />
+                </div>
+                <div class="flex flex-col gap-4 w-full">
+                    <div class="bg-black w-full">
+                        <img src="/public/images/attractive-woman-wearing-hat-posing-black-background.png" alt="" />
+                    </div>
+                    <div class="flex gap-4 w-full">
+                        <div class="bg-black w-full"><img src="/public/images/speaker.png" alt="" /></div>
+                        <div class="bg-black w-full"><img src="/public/images/beauty.png" alt="" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div>8</div>
     </div>
 </template>
@@ -134,6 +179,6 @@ const categoriesList = [
 
 <style scoped>
 .titleStyle {
-    @apply text-3xl font-semibold;
+    @apply text-3xl font-semibold -mt-2;
 }
 </style>
