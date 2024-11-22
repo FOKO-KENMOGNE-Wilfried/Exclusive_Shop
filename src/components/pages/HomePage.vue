@@ -1,10 +1,10 @@
 <template>
-    <div class="flex flex-col px-16 gap-32">
+    <div id="top" class="flex flex-col px-16 gap-32 relative">
         <div class="flex justify-between w-full h-fit">
             <div class="flex flex-col w-2/12 border-r pt-8">
                 <div v-for="category in categoriesList" :key="category.id" class="flex items-center justify-between cursor-pointer hover:bg-gray-200 h-10 transition-all duration-200 ease-in-out px-2">
                     <p>{{ category.label }}</p>
-                    <!-- <img src="/public/icons/DropDown.svg" alt="dropdown" /> -->
+                    <!-- <img src="/icons/DropDown.svg" alt="dropdown" /> -->
                 </div>
             </div>
             <div class="bg-gray-400 w-full mt-8 ml-8"></div>
@@ -110,20 +110,35 @@
             <h2 class="titleStyle">New Arrival</h2>
             <div class="flex gap-4">
                 <div class="bg-black w-full">
-                    <img src="/public/images/ps5-slim.png" alt="" />
+                    <img src="/images/ps5-slim.png" alt="" />
                 </div>
                 <div class="flex flex-col gap-4 w-full">
                     <div class="bg-black w-full">
-                        <img src="/public/images/attractive-woman-wearing-hat-posing-black-background.png" alt="" />
+                        <img src="/images/attractive-woman-wearing-hat-posing-black-background.png" alt="" />
                     </div>
                     <div class="flex gap-4 w-full">
-                        <div class="bg-black w-full"><img src="/public/images/speaker.png" alt="" /></div>
-                        <div class="bg-black w-full"><img src="/public/images/beauty.png" alt="" /></div>
+                        <div class="bg-black w-full"><img src="/images/speaker.png" alt="" /></div>
+                        <div class="bg-black w-full"><img src="/images/beauty.png" alt="" /></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div>8</div>
+        <div class="flex gap-10 justify-around pb-32">
+            <div v-for="item in advantagesList" :key="item.id" class="flex flex-col gap-2 w-fit items-center">
+                <div class="bg-gray-400 w-fit p-3 rounded-full">
+                    <div class="bg-black w-fit rounded-full p-2">
+                        <img :src="item.image" :alt="item.image" />
+                    </div>
+                </div>
+                <!-- <div> -->
+                    <p class="font-semibold text-xl ">{{ item.label }}</p>
+                    <p class="text-sm">{{ item.desciption }}</p>
+                <!-- </div> -->
+            </div>
+        </div>
+        <a href="#top" class="bg-gray-200 w-fit p-2 rounded-full absolute bottom-8 right-10">
+            <img src="/icons/icons_arrow-up.svg" alt="arrow-up" />
+        </a>
     </div>
 </template>
 
@@ -173,6 +188,26 @@ const categoriesList = [
     {
         id: 9,
         label: "Health & Beauty",
+    },
+]
+const advantagesList = [
+    {
+        id: 1,
+        label: "FREE AND FAST DELIVERY",
+        desciption: "Free delibery for all order over $140",
+        image: "/icons/icon-delivery.svg"
+    },
+    {
+        id: 2,
+        label: "24j/7 CUSTOMER SERVICES",
+        desciption: "Friendly 24/7 customer support",
+        image: "/icons/Icon-Customer service.svg"
+    },
+    {
+        id: 3,
+        label: "MONEY BACK GUARANTEE",
+        desciption: "We return money within 30 days",
+        image: "/icons/Icon-secure.svg"
     },
 ]
 </script>
