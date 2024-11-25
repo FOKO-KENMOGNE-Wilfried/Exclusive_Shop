@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-2 hover:shadow-md">
+    <div class="flex flex-col gap-2 hover:shadow-md w-fit">
         <div class="flex items-center justify-center overflow-hidden relative w-full px-8 h-56 productCardImage">
             <RouterLink to="/ProductDetail" class="absolute w-full h-full flex items-center justify-center bg-gray-100 cursor-pointer px-4">
             <!-- <div @click="() => console.log('Click to the component')" class="absolute w-full h-full flex items-center justify-center bg-gray-100 cursor-pointer px-4"> -->
@@ -40,6 +40,17 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+defineProps<{
+    productData?: {
+        productName: string,
+        productPrice: string,
+        productImage: string,
+        productReview: number,
+        isPromotion: boolean,
+        productPromotionPrice: number,
+        productReviewNumber: number,
+    },
+}>()
 
 let starNumber = ref<number>(3.5);
 let fillStarNumber = ref<number>(0);
