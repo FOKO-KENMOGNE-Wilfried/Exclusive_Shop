@@ -36,14 +36,15 @@
                 <p>Update Cart</p>
             </div>
         </div>
-        <div class="flex justify-between pt-8 gap-4">
+        <div class="flex justify-between pt-16 gap-4">
             <div class="flex items-start h-10 gap-4">
                 <input type="text" placeholder="Coupon Code" class="border border-black outline-none px-4 h-full rounded-sm" />
                 <CustomButton :handle-click="() => null">
                     <p class="px-4">Apply Coupon</p>
                 </CustomButton>
             </div>
-            <div class="border border-black w-96 p-4 flex flex-col gap-2">
+            <!--  -->
+            <div class="border border-black min-w-96 p-4 flex flex-col gap-2">
                 <p class="font-semibold">Cart Total</p>
                 <!--  -->
                 <div class="flex flex-col text-sm">
@@ -63,9 +64,11 @@
                     </div>
                 </div>
                 <!--  -->
-                <CustomButton :handle-click="() => null">
-                    <p>Procees to checkout</p>
-                </CustomButton>
+                <RouterLink to="/checkOut">
+                    <CustomButton :handle-click="() => null">
+                        <p>Procees to checkout</p>
+                    </CustomButton>
+                </RouterLink>
             </div>
         </div>
     </div>

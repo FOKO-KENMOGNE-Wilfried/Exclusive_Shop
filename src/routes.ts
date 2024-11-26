@@ -76,6 +76,11 @@ const routes = [
                 name: "WishlistPage",
                 component: () => import("./components/pages/Wishlist.vue"),
             },
+            {
+                path: "/404",
+                name: "404",
+                component: () => import("./components/pages/404.vue"),
+            },
         ]
     }
 ]
