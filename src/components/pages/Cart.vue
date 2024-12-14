@@ -11,7 +11,7 @@
             <div v-for="item in 4" :key="item" class="grid grid-cols-4 border shadow-md px-8 py-4 cardProductContainer">
                 <div class="flex gap-4 items-center relative">
                     <div @click="() => null" class="absolute top-0 left-0 text-white bg-primary rounded-full w-4 h-4 flex items-center justify-center cursor-pointer crossClass">&times;</div>
-                    <img src="/public/images/keyboard.png" alt="keyboard" class="w-16" />
+                    <img src="/images/keyboard.png" alt="keyboard" class="w-16" />
                     <p>LCD Monitor</p>
                 </div>
                 <!--  -->

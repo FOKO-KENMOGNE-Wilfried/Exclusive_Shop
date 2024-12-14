@@ -6,12 +6,16 @@
                 <RouterLink to="/">Home</RouterLink>
                 <div></div>
             </div>
-            <div class="linkContainer">
+            <!-- <div class="linkContainer">
                 <RouterLink to="/contact">Contact</RouterLink>
                 <div></div>
             </div>
             <div class="linkContainer">
                 <RouterLink to="/about">About</RouterLink>
+                <div></div>
+            </div> -->
+            <div class="linkContainer">
+                <RouterLink to="/wishlist">Wishlist</RouterLink>
                 <div></div>
             </div>
             <div class="linkContainer">
@@ -87,7 +91,7 @@ const isMenuDisplay = ref<boolean>(false);
 <style scoped>
 .linkContainer div {
     width: 0px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #DB4444;
     transition: all 0.2s ease-in-out;
 }
 .linkContainer:hover div {

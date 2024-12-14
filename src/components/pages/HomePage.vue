@@ -50,8 +50,8 @@
             </div>
             <!--  -->
             <Carousel v-bind="config" class="">
-                <Slide v-for="slide in 10" :key="slide" class="py-8">
-                    <CustomProductCard />
+                <Slide v-for="slide in productData" :key="slide.id" class="py-8">
+                    <CustomProductCard :product-specification="slide" />
                 </Slide>
 
                 <template #addons>
@@ -100,8 +100,8 @@
                 </div>
             </div>
             <Carousel v-bind="config" class="">
-                <Slide v-for="slide in 10" :key="slide" class="py-8">
-                    <CustomProductCard />
+                <Slide v-for="slide in productData" :key="slide.id" class="py-8">
+                    <CustomProductCard :product-specification="slide" />
                 </Slide>
 
                 <template #addons>
@@ -151,7 +151,7 @@
             <CustomSectionTitle label="Our Products" />
             <h2 class="titleStyle">Explore Our Products</h2>
             <div class="flex gap-4 flex-wrap">
-                <CustomProductCard v-for="element in 8" :key="element" />
+                <CustomProductCard v-for="element in productData" :key="element.id" :product-specification="element" />
             </div>
             <div class="flex justify-center pt-4">
                 <div class="w-48">
@@ -209,6 +209,7 @@ import CustomButton from '../common/CustomButton.vue';
 import CountDown from '../../utils/CountDown';
 import CustomProductCard from '../common/CustomProductCard.vue';
 import CustomCategoryCard from '../common/CustomCategoryCard.vue';
+import { productData } from '../../utils/FakeData';
 
 const config = {
   itemsToShow: 6,
