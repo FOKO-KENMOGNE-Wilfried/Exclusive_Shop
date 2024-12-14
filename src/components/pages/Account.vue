@@ -30,7 +30,7 @@
             </div>
           </div>
         </div>
-        <div class="w-full">
+        <div class="w-full border shadow-md py-8 px-16">
           <component v-if="selectedSubOption.component" :is="selectedSubOption.component"></component>
         </div>
       </div>

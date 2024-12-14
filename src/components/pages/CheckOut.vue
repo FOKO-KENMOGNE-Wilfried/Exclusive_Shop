@@ -4,14 +4,14 @@
         <div class="flex gap-16 pt-8">
             <form class="flex flex-col gap-4 w-6/12">
                 <h2 class="text-2xl font-semibold">Billing Details</h2>
-                <div class="flex flex-col gap-2">
-                    <CustomGlobalTextInput value="First Name" />
-                    <CustomGlobalTextInput value="Category Name" />
-                    <CustomGlobalTextInput value="Street Address" />
-                    <CustomGlobalTextInput value="Appartment, floor, etc... (optional)" />
-                    <CustomGlobalTextInput value="Town/City" />
-                    <CustomGlobalTextInput value="Phone Number" />
-                    <CustomGlobalTextInput value="Email Address" />
+                <div class="flex flex-col gap-6">
+                    <CustomGlobalTextInput @value="(value) => userFirstName = value" value="First Name" />
+                    <CustomGlobalTextInput @value="(value) => userCompanyName = value" value="Company Name" />
+                    <!-- <CustomGlobalTextInput @value="(value) => userFirstName = value" value="Street Address" /> -->
+                    <!-- <CustomGlobalTextInput @value="(value) => userFirstName = value" value="Appartment, floor, etc... (optional)" /> -->
+                    <CustomGlobalTextInput @value="(value) => userCity = value" value="Town/City" />
+                    <CustomGlobalTextInput @value="(value) => userPhone = value" value="Phone Number" />
+                    <CustomGlobalTextInput @value="(value) => userEmail = value" value="Email Address" />
                 </div>
             </form>
             <div class="min-w-72 flex flex-col gap-4">
@@ -78,10 +78,15 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import CustomButton from '../common/CustomButton.vue';
 import CustomGlobalTextInput from '../common/CustomGlobalTextInput.vue';
 
-
+const userFirstName = ref<string>("");
+const userCompanyName = ref<string>("");
+const userEmail = ref<string>("");
+const userPhone = ref<string>("");
+const userCity = ref<string>("");
 </script>
 
 <style scoped>

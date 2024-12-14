@@ -28,12 +28,12 @@
             <!--  -->
             <div class="w-full shadow-md border rounded-md justify-around p-8 flex gap-8 flex-col">
                 <div class="flex gap-4 justify-between">
-                    <CustomGlobalTextInput :is-required="true" value="Your Name" />
-                    <CustomGlobalTextInput :is-required="true" value="Your Email" />
-                    <CustomGlobalTextInput :is-required="true" value="Your Phone" />
+                    <CustomGlobalTextInput @value="(value) => userName = value" :is-required="true" value="Your Name" />
+                    <CustomGlobalTextInput @value="(value) => userEmail = value" :is-required="true" value="Your Email" />
+                    <CustomGlobalTextInput @value="(value) => userPhone = value" :is-required="true" value="Your Phone" />
                 </div>
                 <!--  -->
-                <textarea name="message" id="message" cols="30" rows="10" placeholder="Your Message" class="bg-gray-100 w-full p-4"></textarea>
+                <textarea v-model="userMessage" name="message" id="message" cols="30" rows="10" placeholder="Your Message" class="bg-gray-100 w-full p-4"></textarea>
                 <!--  -->
                 <div class="flex justify-end">
                     <CustomButton :handle-click="() => null">
@@ -46,10 +46,14 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import CustomButton from '../common/CustomButton.vue';
 import CustomGlobalTextInput from '../common/CustomGlobalTextInput.vue';
 
-
+const userName = ref<string>("");
+const userEmail = ref<string>("");
+const userPhone = ref<string>("");
+const userMessage = ref<string>("");
 </script>
 
 <style scoped></style>
