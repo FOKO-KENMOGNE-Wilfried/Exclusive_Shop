@@ -30,7 +30,7 @@
             </div>
         </div>
         <!--  -->
-        <div class="flex gap-2 px-4">
+        <div class="flex gap-[13px] px-4 pl-[20px]">
             <div
                 v-for="(option, index) in computedOptionList"
                 @click="() => {

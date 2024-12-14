@@ -5,7 +5,7 @@
             <div class="cursor-pointer border border-black w-fit  px-4 py-2 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 ease-in-out">Move All To Bag</div>
         </div>
         <div class="flex gap-4 flex-wrap">
-            <CustomProductCard v-for="item in 6" :key="item" />
+            <CustomProductCard v-for="element in productData" :key="element.id" :product-specification="element" />
         </div>
         <div class="flex flex-col gap-4">
             <div class="flex justify-between">
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="flex gap-4">
-                <CustomProductCard v-for="item in 6" :key="item" />
+                <CustomProductCard v-for="element in productData" :key="element.id" :product-specification="element" />
             </div>
         </div>
     </div>
@@ -24,6 +24,7 @@
 <script setup lang="ts">
 import CustomProductCard from '../common/CustomProductCard.vue';
 import CustomSectionTitle from '../common/CustomSectionTitle.vue';
+import { productData } from '../../utils/FakeData';
 
 
 </script>

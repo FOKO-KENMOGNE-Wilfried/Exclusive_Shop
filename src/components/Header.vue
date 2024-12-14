@@ -6,20 +6,20 @@
                 <RouterLink to="/">Home</RouterLink>
                 <div></div>
             </div>
-            <!-- <div class="linkContainer">
-                <RouterLink to="/contact">Contact</RouterLink>
-                <div></div>
-            </div>
-            <div class="linkContainer">
-                <RouterLink to="/about">About</RouterLink>
-                <div></div>
-            </div> -->
             <div class="linkContainer">
                 <RouterLink to="/wishlist">Wishlist</RouterLink>
                 <div></div>
             </div>
             <div class="linkContainer">
                 <RouterLink to="/signup">Sign Up</RouterLink>
+                <div></div>
+            </div>
+            <div class="linkContainer">
+                <RouterLink to="/contact">Contact</RouterLink>
+                <div></div>
+            </div>
+            <div class="linkContainer">
+                <RouterLink to="/about">About</RouterLink>
                 <div></div>
             </div>
         </div>
@@ -107,7 +107,7 @@ const isMenuDisplay = ref<boolean>(false);
     @apply flex p-1 items-center justify-center rounded-full;
 }
 .userLinkHoverEffect:hover {
-   @apply bg-primary flex items-center justify-center rounded-full;
+    @apply bg-primary flex items-center justify-center rounded-full;
 }
 
 </style>

@@ -73,7 +73,7 @@ const routes = [
             },
             {
                 path: "/wishlist",
-                name: "WishlistPage",
+                name: "Wishlist",
                 component: () => import("./components/pages/Wishlist.vue"),
             },
             {

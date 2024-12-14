@@ -267,7 +267,7 @@ const advantagesList = [
         id: 2,
         label: "24j/7 CUSTOMER SERVICES",
         desciption: "Friendly 24/7 customer support",
-        image: "/icons/Icon-Customer service.svg"
+        image: "/icons/Icon-Customer_service.svg"
     },
     {
         id: 3,

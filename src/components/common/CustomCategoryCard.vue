@@ -1,10 +1,11 @@
 <template>
     <div class="relative border w-48 h-48 flex flex-col cursor-pointer items-center justify-center rounded-md categoriesContainer">
-        <div class="bg-white rounded-full p-1 relative z-10">
-            <img :src="categoryImg" alt="gaming" />
+        <div v-if="categoryImg" class="bg-white rounded-full p-1 relative z-10">
+            <img :src="categoryImg" :alt="categoryName" />
         </div>
-        <p class="z-10">{{ categoryName }}</p>
+        <p class="z-10" v-if="categoryName">{{ categoryName }}</p>
         <div class="ColorChanging absolute"></div>
+        <slot />
     </div>
 </template>
 
