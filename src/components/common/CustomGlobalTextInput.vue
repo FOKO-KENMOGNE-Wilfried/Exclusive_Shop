@@ -1,7 +1,7 @@
 <template>
     <div class="">
-        <p class="text-gray-400">{{ value }}</p>
-        <input v-model="inputValue" placeholder="tst" @change="() => updateInput()" type="text" class="bg-gray-100 rounded-md h-10 pl-4 w-full outline-primary" />
+        <p class="text-gray-600">{{ value }}<span v-if="isRequired" class="text-primary">*</span></p>
+        <input v-model="inputValue" :placeholder="value" @change="() => updateInput()" type="text" class="bg-gray-100 rounded-md h-10 pl-4 w-full outline-primary" />
     </div>
 </template>
 
@@ -10,6 +10,7 @@ import { ref } from 'vue';
 
 defineProps<{
     value: string;
+    isRequired?: boolean
 }>()
 
 const emit = defineEmits(["value"]);
