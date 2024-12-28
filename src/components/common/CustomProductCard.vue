@@ -3,7 +3,7 @@
         <div class="flex items-center justify-center overflow-hidden relative w-full px-8 h-56 productCardImage">
             <RouterLink to="/ProductDetail" class="absolute w-full h-full flex items-center justify-center bg-gray-100 cursor-pointer px-4">
             <!-- <div @click="() => console.log('Click to the component')" class="absolute w-full h-full flex items-center justify-center bg-gray-100 cursor-pointer px-4"> -->
-                <img :src="productOptions?.[selectedOption].image" :alt="productSpecification?.name" class=" relative z-10 h-fit" />
+                <img :src="productOptions?.[selectedOption].imagesUrl[0].imageUrl" :alt="productSpecification?.name" class=" relative z-10 h-fit" />
             </RouterLink>
             <div class="absolute right-2 top-2 flex flex-col gap-2">
                 <!-- <div class="bg-white flex items-center justify-center rounded-full p-1 w-6 h-6 cursor-pointer"><img src="/icons/see.svg" alt="see" /></div> -->

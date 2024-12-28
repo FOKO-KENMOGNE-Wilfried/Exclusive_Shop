@@ -3,7 +3,7 @@
         <div :class="!inputValue ? 'relative h-8 top-1 emptyInput transition-all duration-150 ease-in-out' : 'relative h-8 -top-2 fillInput transition-all duration-150 ease-in-out'">
             <legend class="absolute">{{ value }}</legend>
         </div>
-        <input v-model="inputValue" @change="() => updateInput()" type="text" class="border-b border-black absolute bottom-0 w-full bg-transparent outline-none" />
+        <input v-model="inputValue" @change="() => updateInput()" :type="inputType" class="border-b border-black absolute bottom-0 w-full bg-transparent outline-none" />
     </div>
 </template>
 
@@ -12,6 +12,7 @@ import { ref } from 'vue';
 
 defineProps<{
     value: string;
+    inputType: string;
 }>()
 
 const emit = defineEmits(["value"]);

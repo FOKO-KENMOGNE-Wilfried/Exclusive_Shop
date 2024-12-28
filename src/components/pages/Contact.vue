@@ -33,7 +33,7 @@
                     <CustomGlobalTextInput @value="(value) => userPhone = value" :is-required="true" value="Your Phone" />
                 </div>
                 <!--  -->
-                <textarea v-model="userMessage" name="message" id="message" cols="30" rows="10" placeholder="Your Message" class="bg-gray-100 w-full p-4"></textarea>
+                <textarea v-model="userMessage" name="message" id="message" cols="30" rows="10" placeholder="Your Message" class="bg-gray-100 w-full p-4 outline-primary"></textarea>
                 <!--  -->
                 <div class="flex justify-end">
                     <CustomButton :handle-click="() => null">

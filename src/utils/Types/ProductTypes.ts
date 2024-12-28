@@ -14,6 +14,7 @@ export default class ProductType {
             id: number,
             image: string,
             color: string,
+            isSelected?: boolean,
             size: [
                 {
                     id: number,

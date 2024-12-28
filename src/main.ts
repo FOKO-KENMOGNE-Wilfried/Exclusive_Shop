@@ -1,7 +1,7 @@
 import "./style.css"
 import PrimeVue from "primevue/config"
 import Aura from "@primevue/themes/aura"
-import "./components/style/GlobalStyle.css"
+import "./utils/style/GlobalStyle.css"
 import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from "./routes"

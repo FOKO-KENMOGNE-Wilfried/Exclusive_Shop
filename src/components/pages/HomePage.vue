@@ -49,7 +49,7 @@
                 <!-- <div id="countDownContainer"></div> -->
             </div>
             <!--  -->
-            <Carousel v-bind="config" class="">
+            <Carousel v-bind="computedConfig" class="">
                 <Slide v-for="slide in productData" :key="slide.id" class="py-8">
                     <CustomProductCard :product-specification="slide" />
                 </Slide>
@@ -73,11 +73,11 @@
         <!--  -->
         <div class="flex flex-col gap-4">
             <CustomSectionTitle label="Categories" />
-            <h2 class="titleStyle">Browe By Catgory</h2>
+            <h2 class="titleStyle">Browse By Catgory</h2>
          <!--  -->
-            <Carousel v-bind="config" class="">
-                <Slide v-for="category in categoriesList2" :key="category.id" class="">
-                    <CustomCategoryCard :category-img="category.image" :category-name="category.label" />
+            <Carousel v-bind="computedConfig" class="border bg-primary">
+                <Slide v-for="category in categories" :key="category.id" class="">
+                    <CustomCategoryCard :category-img="category.image" :category-name="category.name" />
                 </Slide>
 
                 <template #addons>
@@ -89,7 +89,7 @@
             <div class="border-b border-gray-200 py-8"></div>
         </div>
         <!--  -->
-        <div class="flex flex-col gap-4">
+        <!-- <div class="flex flex-col gap-4">
             <CustomSectionTitle label="This Month" />
             <div class="flex items-center justify-between">
                 <h2 class="titleStyle">Best Selling Products</h2>
@@ -99,53 +99,52 @@
                     </CustomButton>
                 </div>
             </div>
-            <Carousel v-bind="config" class="">
+            <Carousel v-bind="computedConfig" class="">
                 <Slide v-for="slide in productData" :key="slide.id" class="py-8">
                     <CustomProductCard :product-specification="slide" />
                 </Slide>
 
                 <template #addons>
                     <Navigation class="bg-black"/>
-                    <!-- <Pagination /> -->
                 </template>
             </Carousel>
-        </div>
+        </div> -->
         <!--  -->
-        <div>
+        <!-- <div>
             <div class="bg-black h-96 flex justify-between px-8 py-4">
                 <div class="text-white flex flex-col justify-around">
                     <p class="text-green-400 font-semibold">Categories</p>
                     <p class="text-4xl font-semibold w-80">Enhance Your Music Experience</p>
-                    <!--  -->
+
                     <div class="flex items-center gap-4 text-black">
                         <div class="bg-white rounded-full flex flex-col items-center justify-center w-16 h-16">
                             <p id="categoriesCountDownDays" class="font-bold">23</p>
                             <p class="text-xs -mt-1">Days</p>
                         </div>
-                        <!--  -->
+
                         <div class="bg-white rounded-full flex flex-col items-center justify-center w-16 h-16">
                             <p id="categoriesCountDownHour" class="font-bold">23</p>
                             <p class="text-xs -mt-1">Hours</p>
                         </div>
-                        <!--  -->
+
                         <div class="bg-white rounded-full flex flex-col items-center justify-center w-16 h-16">
                             <p id="categoriesCountDownMinutes" class="font-bold">23</p>
                             <p class="text-xs -mt-1">Minutes</p>
                         </div>
-                        <!--  -->
+
                         <div class="bg-white rounded-full flex flex-col items-center justify-center w-16 h-16">
                             <p id="categoriesCountDownSeconds" class="font-bold">23</p>
                             <p class="text-xs -mt-1">Seconds</p>
                         </div>
                     </div>
-                    <!--  -->
+
                     <div class="bg-green-400 rounded-sm font-semibold flex items-center justify-center px-8 cursor-pointer hover:bg-green-400/80 py-2 w-fit"><p>Buy Now</p></div>
                 </div>
                 <div class="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-black/10 to-black p-2">
                     <img src="/images/JBL_BOOMBOX_2_HERO_020_x1.png" alt="jbl" class="w-fit" />
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--  -->
         <div class="flex flex-col gap-4">
             <CustomSectionTitle label="Our Products" />
@@ -155,7 +154,9 @@
             </div>
             <div class="flex justify-center pt-4">
                 <div class="w-48">
-                    <CustomButton :handle-click="() => null">
+                    <CustomButton :handle-click="() => {
+                        router.push({path: '/productsList'}) 
+                    }">
                         <p>View All Products</p>
                     </CustomButton>
                 </div>
@@ -209,12 +210,20 @@ import CustomButton from '../common/CustomButton.vue';
 import CountDown from '../../utils/CountDown';
 import CustomProductCard from '../common/CustomProductCard.vue';
 import CustomCategoryCard from '../common/CustomCategoryCard.vue';
-import { productData } from '../../utils/FakeData';
+// import { productData } from '../../utils/FakeData';
+import { computed, onMounted, ref } from 'vue';
+import API from '../../utils/API';
+// import LocalStorageManager from '../../utils/LocalStorageManager';
+import CategoryType from '../../utils/Types/CategoryType';
+import { router } from '../../routes';
+import ProductType from '../../utils/Types/ProductTypes';
 
-const config = {
+const api = new API();
+
+const config = ref({
   itemsToShow: 6,
   gap: 16
-}
+});
 const mainCarouselConfig = {
     itemsToShow: 1,
 }
@@ -276,42 +285,51 @@ const advantagesList = [
         image: "/icons/Icon-secure.svg"
     },
 ]
-const categoriesList2 = [
-    {
-        id: 1,
-        label: "Gaming",
-        image: "/icons/Category-Gamepad.svg"
-    },
-    {
-        id: 2,
-        label: "Phones",
-        image: "/icons/Category-CellPhone.svg"
-    },
-    {
-        id: 3,
-        label: "Computers",
-        image: "/icons/Category-Computer.svg"
-    },
-    {
-        id: 4,
-        label: "SmartWatch",
-        image: "/icons/Category-SmartWatch.svg"
-    },
-    {
-        id: 5,
-        label: "Camera",
-        image: "/icons/Category-Camera.svg"
-    },
-    {
-        id: 6,
-        label: "HeadPhones",
-        image: "/icons/Category-Headphone.svg"
-    },
-]
+
+const computedConfig = computed(() => {
+    return config;
+})
+
+const productData = ref<ProductType[]>([])
+const categories = ref<CategoryType[]>([]);
 
 
 CountDown("Jan 5, 2030 15:37:25", "fastSaleCountDownDays", "fastSaleCountDownHours", "fastSaleCountDownMinutes", "fastSaleCountDownSeconds");
 CountDown("Jan 5, 2030 15:37:25", "categoriesCountDownDays", "categoriesCountDownHour", "categoriesCountDownMinutes", "categoriesCountDownSeconds");
+
+onMounted(() => {
+    api.getData(api.apiUrl + "/category/categories", null)
+        .then((res: CategoryType[]) => {
+            console.log(res);
+            categories.value = res;
+            categories.value.map((element) => {
+                element.image = api.apiUrl + "/uploads/" + element.image;
+            })
+            config.value = {
+                itemsToShow: res.length < 6 ? res.length : 6,
+                gap: 16
+            };
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+    api.getData(api.apiUrl + "/product/getAll", null)
+        .then((res: ProductType[]) => {
+            productData.value = res
+            productData.value.map((element) => {
+                element.options?.map((option) => {
+                    option.imagesUrl.map((image) => {
+                        image.imageUrl = api.apiUrl + "/uploads/" + image.imageUrl;
+                    })
+                })
+            })
+            console.log(res);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+})
 </script>
 
 <style scoped>

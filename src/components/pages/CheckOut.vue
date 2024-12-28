@@ -7,8 +7,6 @@
                 <div class="flex flex-col gap-6">
                     <CustomGlobalTextInput @value="(value) => userFirstName = value" value="First Name" />
                     <CustomGlobalTextInput @value="(value) => userCompanyName = value" value="Company Name" />
-                    <!-- <CustomGlobalTextInput @value="(value) => userFirstName = value" value="Street Address" /> -->
-                    <!-- <CustomGlobalTextInput @value="(value) => userFirstName = value" value="Appartment, floor, etc... (optional)" /> -->
                     <CustomGlobalTextInput @value="(value) => userCity = value" value="Town/City" />
                     <CustomGlobalTextInput @value="(value) => userPhone = value" value="Phone Number" />
                     <CustomGlobalTextInput @value="(value) => userEmail = value" value="Email Address" />

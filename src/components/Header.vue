@@ -24,9 +24,9 @@
             </div>
         </div>
         <div class="flex gap-4">
-            <div class="flex items-center gap-4 bg-gray-200 pr-2 rounded-md">
-                <input type="text" placeholder="What are you looking for ?" class="bg-transparent outline-none w-full h-full py-2 px-2">
-                <img src="/icons/search.svg" alt="search_icon">
+            <div class="flex items-center gap-4 bg-gray-200 rounded-md relative">
+                <input type="text" placeholder="What are you looking for ?" class="bg-transparent outline-primary w-full h-full py-2 px-2">
+                <img class="absolute right-2" src="/icons/search.svg" alt="search_icon">
             </div>
             <RouterLink  to="/wishlist" class="linkHoverEffect">
                 <img src="/icons/Wishlist.svg" alt="wishlist" />
@@ -34,7 +34,10 @@
             <RouterLink  to="/cart" class="linkHoverEffect">
                 <img src="/icons/cart_balck.svg" alt="cart" />
             </RouterLink>
-            <div class="">
+            <RouterLink to="/login" v-if="!isLoggin" class="bg-primary flex items-center justify-center rounded-md w-9 h-9 hover:bg-primary/90">
+                <img src="/icons/Icon-logout.svg" alt="logout" class="">
+            </RouterLink>
+            <div class="" v-else>
                 <div @click="() => {
                     isMenuDisplay ? isMenuDisplay = false : isMenuDisplay = true
                 }" :class="isMenuDisplay ? 'userLinkHoverEffect bg-primary cursor-pointer transition-all duration-150 ease-in-out' : 'userLinkHoverEffect cursor-pointer transition-all duration-150 ease-in-out'">
@@ -45,7 +48,7 @@
                         <img :src="item.icon" :alt="item.label" class="w-7" />
                         <p class="text-nowrap">{{ item.label }}</p>
                     </RouterLink>
-                    <div class="flex gap-2 cursor-pointer bg-transparent hover:bg-white/20 py-1 px-2 rounded-md text-white transition-all duration-150 ease-in-out">
+                    <div @click="() => Logout()" class="flex gap-2 cursor-pointer bg-transparent hover:bg-white/20 py-1 px-2 rounded-md text-white transition-all duration-150 ease-in-out">
                         <img src="/icons/Icon-logout.svg" alt="logout" class="w-7" />
                         <p class="text-nowrap">Logout</p>
                     </div>
@@ -57,6 +60,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import LocalStorageManager from '../utils/LocalStorageManager';
+import { router } from '../routes';
 
 
 const dropDownList = [
@@ -86,6 +91,14 @@ const dropDownList = [
     },
 ]
 const isMenuDisplay = ref<boolean>(false);
+const isLoggin = ref<boolean>(LocalStorageManager.loadData() ? true : false);
+
+function Logout(){
+    LocalStorageManager.removeData();
+    isLoggin.value = false;
+    router.push({ path: "/" }).then(() => { router.go(0) });
+}
+
 </script>
 
 <style scoped>
