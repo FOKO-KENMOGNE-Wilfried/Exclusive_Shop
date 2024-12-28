@@ -75,7 +75,7 @@
             <CustomSectionTitle label="Categories" />
             <h2 class="titleStyle">Browse By Catgory</h2>
          <!--  -->
-            <Carousel v-bind="computedConfig" class="border bg-primary">
+            <Carousel v-bind="computedConfig" class="">
                 <Slide v-for="category in categories" :key="category.id" class="">
                     <CustomCategoryCard :category-img="category.image" :category-name="category.name" />
                 </Slide>
